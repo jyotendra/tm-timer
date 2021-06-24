@@ -8,7 +8,7 @@ const homeSlice = createSlice({
     name: 'home',
     initialState: {
         dummyState: "dummyState"
-    } as any,
+    },
     reducers: {
         dummyAction: () => { },
         dummyActionCompleted: () => { },

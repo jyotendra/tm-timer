@@ -4,8 +4,9 @@ import "./index.scss";
 import App from "./App";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import reportWebVitals from "./reportWebVitals";
-import store from "./app-store/store";
+import store, { persistor } from "./app-store/store";
 import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
 
 if (process.env.NODE_ENV === "production") {
   // removes all console statements from prod
@@ -14,9 +15,11 @@ if (process.env.NODE_ENV === "production") {
 
 ReactDOM.render(
   <Provider store={store}>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
+    <PersistGate loading={null} persistor={persistor}>
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    </PersistGate>
   </Provider>,
   document.getElementById("root")
 );
